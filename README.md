@@ -1,36 +1,170 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📢 Pregón - Delegación Costa Norte
 
-## Getting Started
+Sistema de notificaciones comunitarias por WhatsApp para Delegación Costa Norte.
 
-First, run the development server:
+## 🚀 Características
+
+- ✅ Enviar mensajes a toda la comunidad por WhatsApp
+- ✅ Programar mensajes para envío futuro
+- ✅ Mensajes recurrentes (diarios, semanales, mensuales)
+- ✅ Plantillas de mensajes reutilizables
+- ✅ Suscripción por código QR
+- ✅ Panel de administración seguro
+- ✅ Categorías: residuos, vacunación, seguridad, eventos, emergencias
+
+## 💰 Costos
+
+| Servicio | Costo |
+|----------|-------|
+| Vercel (hosting) | $0 (free tier) |
+| Supabase (base de datos) | $0 (free tier: 500MB) |
+| WhatsApp Cloud API | $0 (primeros 1,000 mensajes/mes) |
+| **Total** | **$0/mes** |
+
+## 📋 Requisitos Previos
+
+1. Cuenta en [Vercel](https://vercel.com) (gratis)
+2. Cuenta en [Supabase](https://supabase.com) (gratis)
+3. Cuenta en [Meta for Developers](https://developers.facebook.com) (gratis)
+4. Node.js 18+ instalado
+
+## 🛠️ Instalación
+
+### 1. Clonar e instalar
+
+```bash
+cd /home/pablo/repos/pregon
+npm install
+```
+
+### 2. Configurar variables de entorno
+
+Copiá el archivo de ejemplo:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Editá `.env.local` con tus credenciales (ver sección de configuración abajo).
+
+### 3. Iniciar en desarrollo
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ⚙️ Configuración
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Supabase (Base de Datos)
 
-## Learn More
+1. Creá una cuenta en [supabase.com](https://supabase.com)
+2. Creá un nuevo proyecto (Región: South America - São Paulo)
+3. Esperá que se inicialice (~2 minutos)
+4. Andá a **Settings → API**
+5. Copiá:
+   - `Project URL` → `NEXT_PUBLIC_SUPABASE_URL`
+   - `anon public` key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+   - `service_role` key → `SUPABASE_SERVICE_ROLE_KEY`
 
-To learn more about Next.js, take a look at the following resources:
+6. Andá a **SQL Editor** y ejecutá el contenido de `supabase/schema.sql`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### WhatsApp Cloud API
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Andá a [developers.facebook.com](https://developers.facebook.com)
+2. Creá una app tipo **Business**
+3. Agregá el producto **WhatsApp**
+4. En WhatsApp → Getting Started:
+   - Copiá el **Phone Number ID** → `WHATSAPP_PHONE_NUMBER_ID`
+   - Generá un **Access Token** → `WHATSAPP_ACCESS_TOKEN`
+5. En WhatsApp → Configuration:
+   - Webhook URL: `https://tu-dominio.vercel.app/api/whatsapp/webhook`
+   - Verify Token: elegí uno y ponelo en `WHATSAPP_VERIFY_TOKEN`
+   - Suscribite a: `messages`
 
-## Deploy on Vercel
+### Variables de Entorno Completas
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```env
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Admin (elegí una contraseña segura)
+ADMIN_PASSWORD=MiContraseñaSegura123!
+
+# WhatsApp
+WHATSAPP_PHONE_NUMBER_ID=123456789012345
+WHATSAPP_ACCESS_TOKEN=EAAGxxxx...
+WHATSAPP_VERIFY_TOKEN=mi_token_secreto_123
+
+# App
+NEXT_PUBLIC_APP_URL=https://pregon.vercel.app
+CRON_SECRET=un_string_aleatorio_muy_largo_aqui
+```
+
+## 🚀 Deploy a Vercel
+
+1. Subí el código a GitHub
+2. Andá a [vercel.com](https://vercel.com) y conectá el repo
+3. Agregá las variables de entorno en Settings → Environment Variables
+4. Deploy!
+
+## 📱 Uso
+
+### Suscripción de Vecinos
+
+Los vecinos pueden suscribirse de dos formas:
+
+1. **Código QR**: Escaneando el código QR que genera el sistema
+2. **Directo**: Enviando "ALTA" al número de WhatsApp
+
+Para darse de baja, envían "BAJA".
+
+### Enviar Mensajes
+
+1. Ingresá al panel con la contraseña
+2. Andá a **Mensajes → Nuevo Mensaje**
+3. Escribí el contenido y elegí la categoría
+4. Enviá ahora o programá para después
+
+### Mensajes Programados
+
+El sistema revisa cada 5 minutos si hay mensajes para enviar.
+Los mensajes recurrentes se re-programan automáticamente.
+
+## 🔧 Estructura del Proyecto
+
+```
+pregon/
+├── src/
+│   ├── app/
+│   │   ├── (dashboard)/      # Panel de admin
+│   │   ├── api/              # API routes
+│   │   ├── login/            # Página de login
+│   │   └── suscribirse/      # Página pública de suscripción
+│   ├── components/
+│   │   ├── ui/               # Componentes reutilizables
+│   │   └── layout/           # Layout components
+│   ├── lib/
+│   │   ├── supabase/         # Cliente de Supabase
+│   │   ├── whatsapp/         # Cliente de WhatsApp API
+│   │   └── utils.ts          # Utilidades
+│   └── types/                # TypeScript types
+├── supabase/
+│   └── schema.sql            # Schema de base de datos
+└── vercel.json               # Configuración de cron jobs
+```
+
+## 📞 Soporte
+
+Para soporte técnico, contactar a pablo.weisbek@gmail.com
+
+## 📄 Licencia
+
+Desarrollado para Delegación Costa Norte.
+
+---
+
+Hecho con ❤️ para la comunidad

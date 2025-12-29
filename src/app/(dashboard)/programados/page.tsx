@@ -1,0 +1,66 @@
+import Link from "next/link";
+import { Plus, Calendar, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export default function ProgramadosPage() {
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">Mensajes Programados</h1>
+          <p className="text-slate-500 mt-1">
+            Mensajes agendados para envío automático
+          </p>
+        </div>
+        <Link href="/mensajes/nuevo">
+          <Button>
+            <Plus className="h-4 w-4" />
+            Programar Mensaje
+          </Button>
+        </Link>
+      </div>
+
+      {/* Calendar placeholder */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base flex items-center gap-2">
+            <Calendar className="h-4 w-4" />
+            Próximos Envíos
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="text-center py-12 text-slate-400">
+            <Clock className="h-12 w-12 mx-auto mb-3 opacity-50" />
+            <p className="font-medium">No hay mensajes programados</p>
+            <p className="text-sm mt-1">
+              Programá un mensaje para que se envíe automáticamente
+            </p>
+            <Link href="/mensajes/nuevo" className="inline-block mt-4">
+              <Button variant="outline" size="sm">
+                <Plus className="h-4 w-4" />
+                Programar mensaje
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Info */}
+      <Card className="border-blue-200 bg-blue-50">
+        <CardContent className="p-6">
+          <h3 className="font-semibold text-blue-900 flex items-center gap-2">
+            <Calendar className="h-5 w-5" />
+            Mensajes Recurrentes
+          </h3>
+          <p className="text-sm text-blue-700 mt-2">
+            Podés configurar mensajes que se envíen automáticamente cada semana,
+            por ejemplo para recordar los días de recolección de residuos.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
