@@ -82,8 +82,10 @@ export default function NuevoMensajePage() {
           </Button>
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Nuevo Mensaje</h1>
-          <p className="text-slate-500 mt-1">
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
+            Nuevo Mensaje
+          </h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-1">
             Redactá un mensaje para la comunidad
           </p>
         </div>
@@ -101,7 +103,7 @@ export default function NuevoMensajePage() {
           <CardContent className="space-y-6">
             {/* Categoría */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
                 Categoría
               </label>
               <Select
@@ -113,7 +115,7 @@ export default function NuevoMensajePage() {
 
             {/* Mensaje */}
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-700">
+              <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
                 Mensaje
               </label>
               <Textarea
@@ -132,24 +134,24 @@ Recordá separar: 🥫 latas, 📦 cartón, 🍾 vidrio y 🧴 plásticos.
                 charCount
                 className="min-h-[200px] font-mono text-sm"
               />
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-400 dark:text-slate-500">
                 Podés usar *texto* para <strong>negrita</strong> y _texto_ para{" "}
                 <em>cursiva</em>
               </p>
             </div>
 
             {/* Programar toggle */}
-            <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+            <div className="flex items-center gap-3 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-transparent dark:border-slate-700/50">
               <input
                 type="checkbox"
                 id="programar"
                 checked={programar}
                 onChange={(e) => setProgramar(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                className="h-4 w-4 rounded border-slate-300 dark:border-slate-600 text-emerald-600 focus:ring-emerald-500 dark:bg-slate-700"
               />
               <label
                 htmlFor="programar"
-                className="text-sm font-medium text-slate-700 cursor-pointer flex items-center gap-2"
+                className="text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer flex items-center gap-2"
               >
                 <Clock className="h-4 w-4" />
                 Programar para después
@@ -159,7 +161,7 @@ Recordá separar: 🥫 latas, 📦 cartón, 🍾 vidrio y 🧴 plásticos.
             {/* Fecha programada */}
             {programar && (
               <div className="space-y-2 animate-fade-in">
-                <label className="text-sm font-medium text-slate-700">
+                <label className="text-sm font-medium text-slate-700 dark:text-slate-300">
                   Fecha y hora de envío
                 </label>
                 <Input
@@ -180,7 +182,7 @@ Recordá separar: 🥫 latas, 📦 cartón, 🍾 vidrio y 🧴 plásticos.
             <CardTitle className="text-base">Vista Previa</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-100">
+            <div className="bg-emerald-50 dark:bg-emerald-950/30 rounded-lg p-4 border border-emerald-100 dark:border-emerald-900/50">
               <div className="flex items-center gap-2 mb-2">
                 <Badge
                   variant={
@@ -196,7 +198,7 @@ Recordá separar: 🥫 latas, 📦 cartón, 🍾 vidrio y 🧴 plásticos.
                   {categorias.find((c) => c.value === categoria)?.label}
                 </Badge>
               </div>
-              <p className="text-slate-700 whitespace-pre-wrap text-sm">
+              <p className="text-slate-700 dark:text-slate-200 whitespace-pre-wrap text-sm">
                 {contenido || "El mensaje aparecerá aquí..."}
               </p>
             </div>
