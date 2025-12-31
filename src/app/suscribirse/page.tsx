@@ -1,4 +1,4 @@
-import { Megaphone, MessageSquare, CheckCircle, Phone } from "lucide-react";
+import { Megaphone, MessageSquare, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { config } from "@/lib/config";
 
@@ -9,7 +9,7 @@ export default function SuscribirsePage() {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=ALTA`;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+    <div className="min-h-screen bg-linear-to-br from-emerald-50 via-white to-emerald-50">
       {/* Header */}
       <header className="bg-emerald-600 text-white py-6 px-4">
         <div className="max-w-lg mx-auto text-center">
@@ -58,7 +58,7 @@ export default function SuscribirsePage() {
             </h3>
             <div className="space-y-4">
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm">
                   1
                 </div>
                 <div>
@@ -71,7 +71,7 @@ export default function SuscribirsePage() {
                 </div>
               </div>
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm">
                   2
                 </div>
                 <div>
@@ -84,7 +84,7 @@ export default function SuscribirsePage() {
                 </div>
               </div>
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm">
+                <div className="shrink-0 w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm">
                   3
                 </div>
                 <div>
@@ -114,7 +114,7 @@ export default function SuscribirsePage() {
                 "🚨 Alertas de emergencia",
               ].map((item, i) => (
                 <li key={i} className="flex items-center gap-2 text-slate-700">
-                  <CheckCircle className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+                  <CheckCircle className="h-4 w-4 text-emerald-500 shrink-0" />
                   {item}
                 </li>
               ))}
