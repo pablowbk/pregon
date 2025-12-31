@@ -34,7 +34,10 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
-    className={cn("font-semibold text-lg leading-none tracking-tight text-secondary-900 dark:text-secondary-50", className)}
+    className={cn(
+      "font-semibold text-lg leading-none tracking-tight text-secondary-900 dark:text-secondary-50",
+      className
+    )}
     {...props}
   />
 ));
@@ -46,7 +49,10 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-secondary-500 dark:text-secondary-400", className)}
+    className={cn(
+      "text-sm text-secondary-500 dark:text-secondary-400",
+      className
+    )}
     {...props}
   />
 ));
@@ -72,5 +78,11 @@ const CardFooter = React.forwardRef<
 ));
 CardFooter.displayName = "CardFooter";
 
-export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent };
-
+export {
+  Card,
+  CardHeader,
+  CardFooter,
+  CardTitle,
+  CardDescription,
+  CardContent,
+};

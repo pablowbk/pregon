@@ -83,11 +83,15 @@ export default function DashboardPage() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-secondary-500 dark:text-secondary-400">{stat.title}</p>
+                  <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                    {stat.title}
+                  </p>
                   <p className="text-3xl font-bold text-secondary-900 dark:text-secondary-50 mt-1">
                     {stat.value}
                   </p>
-                  <p className="text-xs text-secondary-400 dark:text-secondary-500 mt-1">{stat.subtitle}</p>
+                  <p className="text-xs text-secondary-400 dark:text-secondary-500 mt-1">
+                    {stat.subtitle}
+                  </p>
                 </div>
                 <div className={`p-3 rounded-xl ${stat.color}`}>
                   <stat.icon className="h-6 w-6 text-white" />
@@ -178,4 +182,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-

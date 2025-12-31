@@ -58,11 +58,15 @@ export default function NuevoMensajePage() {
       }
 
       toast.success(
-        programar ? "Mensaje programado correctamente" : "Mensaje enviado correctamente"
+        programar
+          ? "Mensaje programado correctamente"
+          : "Mensaje enviado correctamente"
       );
       router.push("/mensajes");
     } catch (error) {
-      toast.error(error instanceof Error ? error.message : "Error al enviar el mensaje");
+      toast.error(
+        error instanceof Error ? error.message : "Error al enviar el mensaje"
+      );
     } finally {
       setIsLoading(false);
     }
@@ -178,7 +182,17 @@ Recordá separar: 🥫 latas, 📦 cartón, 🍾 vidrio y 🧴 plásticos.
           <CardContent>
             <div className="bg-emerald-50 rounded-lg p-4 border border-emerald-100">
               <div className="flex items-center gap-2 mb-2">
-                <Badge variant={categoria as "general" | "residuos" | "vacunacion" | "seguridad" | "eventos" | "emergencia"}>
+                <Badge
+                  variant={
+                    categoria as
+                      | "general"
+                      | "residuos"
+                      | "vacunacion"
+                      | "seguridad"
+                      | "eventos"
+                      | "emergencia"
+                  }
+                >
                   {categorias.find((c) => c.value === categoria)?.label}
                 </Badge>
               </div>
@@ -214,4 +228,3 @@ Recordá separar: 🥫 latas, 📦 cartón, 🍾 vidrio y 🧴 plásticos.
     </div>
   );
 }
-

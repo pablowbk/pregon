@@ -10,13 +10,15 @@ const plantillasEjemplo = [
     id: "1",
     titulo: "Recolección de Residuos",
     categoria: "residuos" as const,
-    contenido: "🗑️ *Recordatorio de Recolección*\n\nMañana {dia} pasa el camión de residuos {tipo}.\n\n♻️ ¡Gracias por colaborar con el barrio!",
+    contenido:
+      "🗑️ *Recordatorio de Recolección*\n\nMañana {dia} pasa el camión de residuos {tipo}.\n\n♻️ ¡Gracias por colaborar con el barrio!",
   },
   {
     id: "2",
     titulo: "Campaña de Vacunación",
     categoria: "vacunacion" as const,
-    contenido: "💉 *Campaña de Vacunación*\n\n{fecha} en {lugar} se realizará una jornada de vacunación {tipo}.\n\nHorario: {horario}\n\n📋 Llevá tu DNI y carnet de vacunación.",
+    contenido:
+      "💉 *Campaña de Vacunación*\n\n{fecha} en {lugar} se realizará una jornada de vacunación {tipo}.\n\nHorario: {horario}\n\n📋 Llevá tu DNI y carnet de vacunación.",
   },
 ];
 
@@ -26,7 +28,9 @@ export default function PlantillasPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">Plantillas</h1>
+          <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">
+            Plantillas
+          </h1>
           <p className="text-secondary-500 dark:text-secondary-400 mt-1">
             Mensajes predefinidos para usar rápidamente
           </p>
@@ -42,7 +46,10 @@ export default function PlantillasPage() {
       {/* Templates Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {plantillasEjemplo.map((plantilla) => (
-          <Card key={plantilla.id} className="hover:shadow-md transition-shadow">
+          <Card
+            key={plantilla.id}
+            className="hover:shadow-md transition-shadow"
+          >
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between gap-4">
                 <CardTitle className="text-base">{plantilla.titulo}</CardTitle>
@@ -91,4 +98,3 @@ export default function PlantillasPage() {
     </div>
   );
 }
-

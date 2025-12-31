@@ -26,15 +26,15 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {...props}
         />
         <div className="flex justify-between mt-1">
-          {error && (
-            <p className="text-sm text-red-600">{error}</p>
-          )}
+          {error && <p className="text-sm text-red-600">{error}</p>}
           {charCount && maxLength && (
-            <p className={cn(
-              "text-xs text-slate-400 ml-auto",
-              currentLength > maxLength * 0.9 && "text-amber-500",
-              currentLength >= maxLength && "text-red-500"
-            )}>
+            <p
+              className={cn(
+                "text-xs text-slate-400 ml-auto",
+                currentLength > maxLength * 0.9 && "text-amber-500",
+                currentLength >= maxLength && "text-red-500"
+              )}
+            >
               {currentLength}/{maxLength}
             </p>
           )}
@@ -46,4 +46,3 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 Textarea.displayName = "Textarea";
 
 export { Textarea };
-

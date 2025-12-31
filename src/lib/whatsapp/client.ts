@@ -158,7 +158,10 @@ export class WhatsAppClient {
   async sendBulkMessages(
     phoneNumbers: string[],
     message: string
-  ): Promise<{ success: string[]; failed: Array<{ phone: string; error: string }> }> {
+  ): Promise<{
+    success: string[];
+    failed: Array<{ phone: string; error: string }>;
+  }> {
     const results = {
       success: [] as string[],
       failed: [] as Array<{ phone: string; error: string }>,
@@ -229,4 +232,3 @@ export function getWhatsAppClient(): WhatsAppClient {
   }
   return whatsappClient;
 }
-

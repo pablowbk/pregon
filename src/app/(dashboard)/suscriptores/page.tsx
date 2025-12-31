@@ -8,16 +8,19 @@ import { Input } from "@/components/ui/input";
 
 export default function SuscriptoresPage() {
   const [showQR, setShowQR] = useState(false);
-  const qrUrl = typeof window !== "undefined" 
-    ? `${window.location.origin}/suscribirse`
-    : "";
+  const qrUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/suscribirse`
+      : "";
 
   return (
     <div className="space-y-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">Suscriptores</h1>
+          <h1 className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">
+            Suscriptores
+          </h1>
           <p className="text-secondary-500 dark:text-secondary-400 mt-1">
             Vecinos que reciben las notificaciones
           </p>
@@ -54,11 +57,7 @@ export default function SuscriptoresPage() {
                   Link de suscripción
                 </label>
                 <div className="flex gap-2">
-                  <Input
-                    value={qrUrl}
-                    readOnly
-                    className="font-mono text-sm"
-                  />
+                  <Input value={qrUrl} readOnly className="font-mono text-sm" />
                   <Button
                     variant="outline"
                     onClick={() => {
@@ -71,7 +70,8 @@ export default function SuscriptoresPage() {
               </div>
 
               <p className="text-sm text-secondary-500 dark:text-secondary-400">
-                Imprimí este código y colocalo en lugares visibles del barrio para que los vecinos puedan suscribirse fácilmente.
+                Imprimí este código y colocalo en lugares visibles del barrio
+                para que los vecinos puedan suscribirse fácilmente.
               </p>
 
               <div className="flex gap-3">
@@ -103,8 +103,12 @@ export default function SuscriptoresPage() {
                 <Users className="h-6 w-6 text-primary-600 dark:text-primary-400" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">0</p>
-                <p className="text-sm text-secondary-500 dark:text-secondary-400">Total suscriptores</p>
+                <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">
+                  0
+                </p>
+                <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                  Total suscriptores
+                </p>
               </div>
             </div>
           </CardContent>
@@ -116,8 +120,12 @@ export default function SuscriptoresPage() {
                 <Phone className="h-6 w-6 text-blue-600 dark:text-blue-400" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">0</p>
-                <p className="text-sm text-secondary-500 dark:text-secondary-400">Activos</p>
+                <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">
+                  0
+                </p>
+                <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                  Activos
+                </p>
               </div>
             </div>
           </CardContent>
@@ -129,8 +137,12 @@ export default function SuscriptoresPage() {
                 <Users className="h-6 w-6 text-secondary-600 dark:text-secondary-300" />
               </div>
               <div>
-                <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">0</p>
-                <p className="text-sm text-secondary-500 dark:text-secondary-400">Nuevos este mes</p>
+                <p className="text-2xl font-bold text-secondary-900 dark:text-secondary-50">
+                  0
+                </p>
+                <p className="text-sm text-secondary-500 dark:text-secondary-400">
+                  Nuevos este mes
+                </p>
               </div>
             </div>
           </CardContent>
