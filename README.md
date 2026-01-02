@@ -14,12 +14,12 @@ Sistema de notificaciones comunitarias por WhatsApp para Delegación Costa Norte
 
 ## 💰 Costos
 
-| Servicio | Costo |
-|----------|-------|
-| Vercel (hosting) | $0 (free tier) |
-| Supabase (base de datos) | $0 (free tier: 500MB) |
-| WhatsApp Cloud API | $0 (primeros 1,000 mensajes/mes) |
-| **Total** | **$0/mes** |
+| Servicio                 | Costo                            |
+| ------------------------ | -------------------------------- |
+| Vercel (hosting)         | $0 (free tier)                   |
+| Supabase (base de datos) | $0 (free tier: 500MB)            |
+| WhatsApp Cloud API       | $0 (primeros 1,000 mensajes/mes) |
+| **Total**                | **$0/mes**                       |
 
 ## 📋 Requisitos Previos
 
@@ -62,13 +62,13 @@ Abrí [http://localhost:3000](http://localhost:3000)
 1. Creá una cuenta en [supabase.com](https://supabase.com)
 2. Creá un nuevo proyecto (Región: South America - São Paulo)
 3. Esperá que se inicialice (~2 minutos)
-4. Andá a **Settings → API**
-5. Copiá:
-   - `Project URL` → `NEXT_PUBLIC_SUPABASE_URL`
-   - `anon public` key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-   - `service_role` key → `SUPABASE_SERVICE_ROLE_KEY`
-
-6. Andá a **SQL Editor** y ejecutá el contenido de `supabase/schema.sql`
+4. Andá a **Settings → Data API**
+5. Copiá: `Project URL` → `NEXT_PUBLIC_SUPABASE_URL`
+6. Andá a **Settings → API Keys**
+7. Copiá:
+   - `Publishable key` default → `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY`
+   - `Secret keys` default → `SUPABASE_SECRET_KEY`
+8. Andá a **SQL Editor** y ejecutá el contenido de `supabase/schema.sql`
 
 ### WhatsApp Cloud API
 
@@ -88,8 +88,8 @@ Abrí [http://localhost:3000](http://localhost:3000)
 ```env
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGc...
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGc...
+NNEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=eyJhbGc...
+SUPABASE_SECRET_KEY=eyJhbGc...
 
 # Admin (elegí una contraseña segura)
 ADMIN_PASSWORD=MiContraseñaSegura123!
