@@ -5,7 +5,7 @@ import { getWhatsAppClient } from "@/lib/whatsapp/client";
 export async function GET() {
   try {
     const supabase = createAdminClient();
-    
+
     const { data: mensajes, error } = await supabase
       .from("mensajes")
       .select("*")
@@ -45,7 +45,11 @@ export async function POST(request: Request) {
     const enviado_en = programado_para ? null : new Date().toISOString();
 
     // Guardar el mensaje en la base de datos
-    const { data: mensaje, error: insertError } = await supabase
+    const {
+      data: mensaje,
+      error: insertError,
+      statusText,
+    } = await supabase
       .from("mensajes")
       .insert({
         contenido: contenido.trim(),
@@ -107,7 +111,8 @@ export async function POST(request: Request) {
         mensaje_id: mensaje.id,
         suscriptor_id: sub.id,
         estado: results.success.includes(sub.telefono) ? "enviado" : "fallido",
-        error_mensaje: results.failed.find((f) => f.phone === sub.telefono)?.error || null,
+        error_mensaje:
+          results.failed.find((f) => f.phone === sub.telefono)?.error || null,
       }));
 
       await supabase.from("registro_envios").insert(registros);
@@ -119,6 +124,8 @@ export async function POST(request: Request) {
       });
     }
 
+    console.log("Mensaje creado:", { mensaje, statusText });
+
     return NextResponse.json(mensaje);
   } catch (error) {
     console.error("Error creating message:", error);
@@ -128,4 +135,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

@@ -3,12 +3,14 @@ import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!;
+const supabaseAnonKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY!;
+const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY!;
 
 export const createClient = async () => {
   const cookieStore = await cookies();
 
-  return createServerClient(supabaseUrl, supabaseKey, {
+  return createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
       getAll() {
         return cookieStore.getAll();
@@ -28,13 +30,14 @@ export const createClient = async () => {
   });
 };
 
-// Admin client with service role key for server-side operations (API routes, cron jobs)
+// Admin client with secret key for server-side operations (API routes, cron jobs)
+// This bypasses RLS - use only in trusted server-side code
 export function createAdminClient() {
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-  if (!supabaseUrl || !serviceRoleKey) {
-    throw new Error("Missing Supabase environment variables for admin client");
+  if (!supabaseUrl || !supabaseSecretKey) {
+    throw new Error(
+      "Missing Supabase environment variables for admin client (SUPABASE_SECRET_KEY)"
+    );
   }
 
-  return createSupabaseClient(supabaseUrl, serviceRoleKey);
+  return createSupabaseClient(supabaseUrl, supabaseSecretKey);
 }
